@@ -72,7 +72,15 @@ jobs:
 
       - name: Build rootfs
         run: |
-          docker exec $CONTAINER_HASH /bin/sh -c 'cd /buildd/sources; DROIDIAN_VERSION="${{ env.DROIDIAN_VERSION }}" ./generate_device_recipe.py ${{ matrix.config.product }} ${{ matrix.config.arch }} ${{ matrix.config.edition }} ${{ matrix.config.variant }} ${{ matrix.config.apilevel }} ${{ matrix.config.droidian_variant }} && debos --disable-fakemachine generated/droidian.yaml'
+          docker exec $CONTAINER_HASH /bin/sh -c '
+            cd /buildd/sources
+            mkdir -p /etc/apt/apt.conf.d/
+            echo "Acquire::AllowInsecureRepositories \"true\";" > /etc/apt/apt.conf.d/99allow-insecure
+            echo "Acquire::AllowUnauthenticated \"true\";" >> /etc/apt/apt.conf.d/99allow-insecure
+            DROIDIAN_VERSION="${{ env.DROIDIAN_VERSION }}" ./generate_device_recipe.py ${{ matrix.config.product }} ${{ matrix.config.arch }} ${{ matrix.config.edition }} ${{ matrix.config.variant }} ${{ matrix.config.apilevel }} ${{ matrix.config.droidian_variant }}
+            echo "Including local apt path mapped directly into debos"
+            debos --disable-fakemachine --repository="deb [trusted=yes] file:///buildd/sources/apt ./" generated/droidian.yaml
+          '
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
