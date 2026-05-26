@@ -1,0 +1,15 @@
+# Samsung s20fe packages
+.samsung_s20fe_packages:
+  packages: &samsung_s20fe_packages
+    - adaptation-samsung-s20fe
+    - adaptation-samsung-s20fe-configs
+
+# Samsung s20fe image
+samsung_s20fe:
+  type: image
+  arch: arm64
+  edition: phosh
+  variant: phone
+  apilevel: 33
+
+  packages: *samsung_s20fe_packages
