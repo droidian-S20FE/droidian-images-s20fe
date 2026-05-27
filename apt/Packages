@@ -4,7 +4,7 @@ Architecture: arm64
 Maintainer: Mathew Dennis <mathewdennis693@gmail.com>
 Installed-Size: 161
 Depends: adaptation-hybris-api30-phone, adaptation-samsung-s20fe-configs (= 0.0.1-1)
-Filename: apt/adaptation-samsung-s20fe_0.0.1-1_arm64.deb
+Filename: ./adaptation-samsung-s20fe_0.0.1-1_arm64.deb
 Size: 47734
 MD5sum: 956cda97b68693546a654e3ec428cc4c
 SHA1: 65e4cc8fb3430e0b593637a76e117b69ed41601c
@@ -19,7 +19,7 @@ Version: 0.0.1-1
 Architecture: arm64
 Maintainer: Mathew Dennis <mathewdennis693@gmail.com>
 Installed-Size: 9
-Filename: apt/adaptation-samsung-s20fe-configs_0.0.1-1_arm64.deb
+Filename: ./adaptation-samsung-s20fe-configs_0.0.1-1_arm64.deb
 Size: 1984
 MD5sum: 43282b7cfe1585185c15ff4b359a99f1
 SHA1: 98b3796f043009a8abf6e39fcf99b432714edd6f
