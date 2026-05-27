@@ -6,7 +6,7 @@
 
 # Samsung s20fe image
 samsung_s20fe:
-  type: image
+  type: rootfs
   arch: arm64
   edition: phosh
   variant: phone
