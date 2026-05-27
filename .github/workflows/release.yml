@@ -74,8 +74,8 @@ jobs:
         run: |
           docker exec $CONTAINER_HASH /bin/sh -c '
             cd /buildd/sources
+            export DROIDIAN_APT_REPOSITORIES="deb [trusted=yes] file:///buildd/sources/apt ./"
             DROIDIAN_VERSION="${{ env.DROIDIAN_VERSION }}" ./generate_device_recipe.py ${{ matrix.config.product }} ${{ matrix.config.arch }} ${{ matrix.config.edition }} ${{ matrix.config.variant }} ${{ matrix.config.apilevel }} ${{ matrix.config.droidian_variant }}
-            sed -i "/architecture:/i apt_repositories:\n  - \"deb [trusted=yes] file:///buildd/sources/apt ./\"" generated/droidian.yaml
             echo "Including local apt path mapped directly into debos"
             debos --disable-fakemachine generated/droidian.yaml
           '
