@@ -8,7 +8,7 @@
 samsung_s20fe:
   type: rootfs
   arch: arm64
-  edition: phosh
+  edition: [phosh, plamo_wf_experimental]
   variant: phone
   apilevel: 33
 
